@@ -27,13 +27,13 @@ public class AudioRecorder : MonoBehaviour
 
 		GetVolume();
 		GetSpectrum();
+			
+		if (slider[0] == null)
+			return;
 
-		if(slider != null && slider.Length != 0)
-		{
-			slider[0].value = volume;
-			slider[1].value = freq;
-		}	
-	}
+        slider[0].value = volume;
+        slider[1].value = freq;
+    }
 
 	public void GetVolume()
 	{
