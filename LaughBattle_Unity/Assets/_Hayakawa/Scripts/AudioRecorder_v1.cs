@@ -31,6 +31,7 @@ public class AudioRecorder_v1 : MonoBehaviour
 		GetVolume();
 		GetSpectrum();
 		GetCount();
+		GetPlaying();
 
 		if (slider[0] == null)
 			return;
@@ -107,7 +108,7 @@ public class AudioRecorder_v1 : MonoBehaviour
 
 		var ___freq = (float)maxIndex * AudioSettings.outputSampleRate / 2 / spectrum.Length;
 
-		var __freq = ___freq.Map(80f, 2500f, 0f, 1f);
+		var __freq = ___freq.Map(200f, 800f, 0f, 1f);
 		_freq = Mathf.Lerp(_freq, __freq, lerpRate);
 		freq = Mathf.Clamp(_freq, 0f, 1f);
 	}
