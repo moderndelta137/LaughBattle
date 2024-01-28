@@ -7,7 +7,7 @@ public class BattleSystem : MonoBehaviour
 	public static BattleSystem instance;
     public BulletGenerator bulletGenerator;
     public AudioRecorder_v1 recorder_player_1, recorder_player_2;
-
+    public HealthBar healthBar_player_1, healthBar_player_2;
     public float Player_1_HP, Player_2_HP;
     public float vol_player_1, freq_player_1, vol_player_2, freq_player_2;
     bool enableShot_p1 = true, enableShot_p2 = true;
@@ -16,6 +16,8 @@ public class BattleSystem : MonoBehaviour
         instance = this;
         Player_1_HP = 10f;
         Player_2_HP = 10f;
+
+
     }
 
     void Update()
@@ -29,6 +31,14 @@ public class BattleSystem : MonoBehaviour
         {
             runningBulletShooting_player_2();
         }
+
+        healthBarFunction();
+    }
+
+    void healthBarFunction()
+    {
+        healthBar_player_1._changingBarState(Player_1_HP);
+        healthBar_player_2._changingBarState(Player_2_HP);
     }
 
     void runningBulletShooting_player_1()
