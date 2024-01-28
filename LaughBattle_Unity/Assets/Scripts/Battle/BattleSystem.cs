@@ -39,12 +39,26 @@ public class BattleSystem : MonoBehaviour
         }
 
         healthBarFunction();
+        checkingHP();
     }
 
     void healthBarFunction()
     {
         healthBar_player_1._changingBarState(Player_1_HP);
         healthBar_player_2._changingBarState(Player_2_HP);
+    }
+
+    void checkingHP()
+    {
+        if(Player_1_HP <= 0)
+        {
+
+        }
+
+        if (Player_2_HP <= 0)
+        {
+
+        }
     }
 
     void runningBulletShooting_player_1()

@@ -19,7 +19,7 @@ public class MainCamera_Record : MonoBehaviour
     {
         Debug.Log("aaa");
 
-        StartCoroutine(_delay(2f));
+        StartCoroutine(_delay(0.6f));
         
 
     }
