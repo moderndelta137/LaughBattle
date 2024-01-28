@@ -8,19 +8,22 @@ public class AudioRecorder_v1 : MonoBehaviour
 {
 	public Slider[] slider;
 
-	private List<AudioClip> recordings = new List<AudioClip>();
+	private AudioClip recording;
 	private AudioSource[] audioSources;
+	private AudioSource audioSource;
 
 	private float _volume, _freq;
 	public float volume, freq, lerpRate;
+	public int lengthInSeconds = 10;
+	public bool isRecording = false;
 
 	void Start()
 	{
-		audioSources = GetComponents<AudioSource>();
-		audioSources[0].clip = Microphone.Start(null, true, 10, 44100);
-		audioSources[0].loop = true;
-		while (!(Microphone.GetPosition(null) > 0)) { }
-		audioSources[0].Play();
+		audioSource = GetComponent<AudioSource>();
+		//audioSources[0].clip = Microphone.Start(null, true, 10, 44100);
+		//audioSources[0].loop = true;
+		//while (!(Microphone.GetPosition(null) > 0)) { }
+		//audioSources[0].Play();
 	}
 
 	void Update()
@@ -35,33 +38,35 @@ public class AudioRecorder_v1 : MonoBehaviour
 		slider[1].value = freq;
 	}
 
-	public void StartRecording(int lengthInSeconds)
+	public void StartRecording()
 	{
-		AudioClip newRecording = Microphone.Start(null, false, lengthInSeconds, 44100);
-		recordings.Add(newRecording);
+		if (isRecording)
+			return;
+
+		isRecording = true;
+		recording = Microphone.Start(null, false, lengthInSeconds, 44100);
+		Debug.Log("Start Recording");
+
+		Invoke("StopRecording", lengthInSeconds);
 	}
 	public void StopRecording()
 	{
+		isRecording = false;
 		Microphone.End(null);
+		Debug.Log("Stop Recording");
 	}
 
-	public void PlayRecording(int index)
+	public void PlayRecording()
 	{
-		if (index >= 0 && index < recordings.Count)
-		{
-			audioSources[1].clip = recordings[index];
-			audioSources[1].Play();
-		}
-		else
-		{
-			Debug.LogError("Recording index out of range!");
-		}
+		audioSource.clip = recording;
+		audioSource.Play();
+		Debug.Log("Play Recording");
 	}
 
 	public void GetVolume()
 	{
 		float[] samples = new float[1024];
-		audioSources[0].GetOutputData(samples, 0);
+		audioSource.GetOutputData(samples, 0);
 		_volume = GetRMSVolume(samples);
 
 		volume = _volume * 2;
@@ -80,7 +85,7 @@ public class AudioRecorder_v1 : MonoBehaviour
 	public void GetSpectrum()
 	{
 		float[] spectrum = new float[1024];
-		audioSources[0].GetSpectrumData(spectrum, 0, FFTWindow.BlackmanHarris);
+		audioSource.GetSpectrumData(spectrum, 0, FFTWindow.BlackmanHarris);
 
 		var maxIndex = 0;
 		var maxValue = 0.0f;
