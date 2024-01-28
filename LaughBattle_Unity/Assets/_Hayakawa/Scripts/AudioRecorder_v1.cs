@@ -11,9 +11,9 @@ public class AudioRecorder_v1 : MonoBehaviour
 	private AudioClip recording;
 	private AudioSource audioSource;
 
-	private float _volume, _freq, _count, startTime;
-	public float volume, freq, count, lerpRate;
-	public int lengthInSeconds = 10;
+	private float _volume, _freq, startTime;
+	public float volume, freq, count, _count, lerpRate;
+	public int lengthInSeconds = 5;
 	private bool isCount;
 	public bool isPlaying = false, isRecording = false , finished_recording = false;
 

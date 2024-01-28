@@ -1,14 +1,17 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.UI;
 public class RecordSystme : MonoBehaviour
 {
     public AudioRecorder_v1 recorder_player_1, recorder_player_2;
+    public CounterBox countBox_p1, countBox_p2;
+    public Slider audioBar_p1, audioBar_p2;
     bool finished_p1_once = true, finished_p2_once = true;
     void Start()
     {
-        
+        countBox_p1.initialNum = recorder_player_1.lengthInSeconds;
+        countBox_p2.initialNum = recorder_player_2.lengthInSeconds;
     }
 
     void Update()
@@ -31,6 +34,20 @@ public class RecordSystme : MonoBehaviour
                 finished_p2_once = false;
             }
         }
+
+        if (recorder_player_1.isRecording == true)
+        {
+            audioBar_p1.value = recorder_player_1.count;
+            countBox_p1._updateCountNum(recorder_player_1._count);
+        }
+
+        if (recorder_player_2.isRecording == true)
+        {
+            audioBar_p2.value = recorder_player_2.count;
+            countBox_p2._updateCountNum(recorder_player_2._count);
+
+        }
+
     }
 
     void _moveCam()
