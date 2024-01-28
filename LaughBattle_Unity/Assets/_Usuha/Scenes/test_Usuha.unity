@@ -1232,9 +1232,11 @@ MonoBehaviour:
   - {fileID: 0}
   volume: 0
   freq: 0
+  count: 0
   lerpRate: 0.2
   lengthInSeconds: 10
   isRecording: 0
+  finished_recording: 0
 --- !u!4 &441120463
 Transform:
   m_ObjectHideFlags: 0
@@ -1478,9 +1480,11 @@ MonoBehaviour:
   - {fileID: 0}
   volume: 0
   freq: 0
+  count: 0
   lerpRate: 0.2
   lengthInSeconds: 10
   isRecording: 0
+  finished_recording: 0
 --- !u!4 &520825557
 Transform:
   m_ObjectHideFlags: 0

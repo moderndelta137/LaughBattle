@@ -26,8 +26,13 @@ public class MainCamera_Record : MonoBehaviour
 
     //void Update()
     //{
-        
+
     //}
+
+    public void _move_to_Player2Pos()
+    {
+        StartCoroutine(MoveToPosition(Player_2_pos, 0.5f));
+    }
 
     IEnumerator MoveToPosition(Vector3 targetPosition, float duration)
     {
