@@ -8,15 +8,21 @@ public class BattleSystem : MonoBehaviour
     public BulletGenerator bulletGenerator;
     public AudioRecorder_v1 recorder_player_1, recorder_player_2;
     public HealthBar healthBar_player_1, healthBar_player_2;
+    public SpriteRenderer playButton;
     public float Player_1_HP, Player_2_HP;
     public float vol_player_1, freq_player_1, vol_player_2, freq_player_2;
     bool enableShot_p1 = true, enableShot_p2 = true;
+
     void Awake()
     {
         instance = this;
         Player_1_HP = 10f;
         Player_2_HP = 10f;
+    }
 
+    private void OnEnable()
+    {
+        playButton.enabled = true;
 
     }
 
@@ -117,6 +123,11 @@ public class BattleSystem : MonoBehaviour
             Player_2_HP -= 1;
 
         }
+    }
+
+    public void _startBattle()
+    {
+        playButton.enabled = false;
     }
 
 }
