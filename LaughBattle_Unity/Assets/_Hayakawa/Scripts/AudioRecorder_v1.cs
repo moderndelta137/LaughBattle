@@ -15,7 +15,7 @@ public class AudioRecorder_v1 : MonoBehaviour
 	public float volume, freq, count, lerpRate;
 	public int lengthInSeconds = 10;
 	private bool isCount,isPlaying;
-	public bool isRecording = false;
+	public bool isRecording = false , finished_recording = false;
 
 	void Start()
 	{
@@ -54,7 +54,8 @@ public class AudioRecorder_v1 : MonoBehaviour
 	}
 	public void StopRecording()
 	{
-		isRecording = false;
+		finished_recording = true;
+        isRecording = false;
 		isCount = false;
 		Microphone.End(null);
 		Debug.Log("Stop Recording");
