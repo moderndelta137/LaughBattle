@@ -14,8 +14,8 @@ public class AudioRecorder_v1 : MonoBehaviour
 	private float _volume, _freq, _count, startTime;
 	public float volume, freq, count, lerpRate;
 	public int lengthInSeconds = 10;
-	private bool isCount,isPlaying;
-	public bool isRecording = false , finished_recording = false;
+	private bool isCount;
+	public bool isPlaying = false, isRecording = false , finished_recording = false;
 
 	void Start()
 	{
