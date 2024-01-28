@@ -1,11 +1,20 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class TransitionManager : MonoBehaviour
 {
     public GameObject TitleScene;
+
     public GameObject RecordScene;
+    float RecordingTimer;
+    public TextMeshProUGUI TimerText;
+    public float RecordingTimerDefault;
+    bool IsRecroding;
+    bool Player1Recorded;
+    bool Player2Recorded;
+
     public GameObject BattleScene;
     public GameObject ResultScene;
     public GameObject CreditScene;
@@ -39,7 +48,14 @@ public class TransitionManager : MonoBehaviour
             case SceneState.Record:
             if(Input.GetButtonDown("Submit"))
                 {
+                    if(Player1Recorded==true&&Player2Recorded==true)
+                    {
                     TransitionToBattle();
+                    }
+                    else
+                    {
+                    StartRecording();
+                    }
                 }
             break;
             case SceneState.Battle:
@@ -64,9 +80,18 @@ public class TransitionManager : MonoBehaviour
                 }
             break;
         }
+        if(IsRecroding)
+        {
+            RecordingTimer -= Time.deltaTime; 
+            TimerText.text = RecordingTimer.ToString();
+            if(RecordingTimer<=0)
+            {
+                StopRecording();
+            }
+        }
     }
 
-    void TransitionToTitle()
+    public void TransitionToTitle()
     {
         TitleScene.SetActive(true);
         RecordScene.SetActive(false);
@@ -75,7 +100,7 @@ public class TransitionManager : MonoBehaviour
         CreditScene.SetActive(false);
         CurrentState = SceneState.Title;
     }
-    void TransitionToRecord()
+    public void TransitionToRecord()
     {
         TitleScene.SetActive(false);
         RecordScene.SetActive(true);
@@ -83,8 +108,22 @@ public class TransitionManager : MonoBehaviour
         ResultScene.SetActive(false);
         CreditScene.SetActive(false);
         CurrentState = SceneState.Record;
+        IsRecroding = false;
+        Player1Recorded = false;
+        Player2Recorded = false;
     }
-    void TransitionToBattle()
+    public void StartRecording()
+    {
+        RecordingTimer = RecordingTimerDefault;
+        IsRecroding=true;
+    }
+    public void StopRecording()
+    {
+        Player1Recorded = true;
+        Player2Recorded = true;
+        IsRecroding=false;
+    }
+    public void TransitionToBattle()
     {
         TitleScene.SetActive(false);
         RecordScene.SetActive(false);
@@ -93,7 +132,7 @@ public class TransitionManager : MonoBehaviour
         CreditScene.SetActive(false);
         CurrentState = SceneState.Battle;
     }
-    void TransitionToResult()
+    public void TransitionToResult()
     {
         TitleScene.SetActive(false);
         RecordScene.SetActive(false);
@@ -102,7 +141,7 @@ public class TransitionManager : MonoBehaviour
         CreditScene.SetActive(false);
         CurrentState = SceneState.Result;
     }
-    void TransitionToCredit()
+    public void TransitionToCredit()
     {
         TitleScene.SetActive(false);
         RecordScene.SetActive(false);
