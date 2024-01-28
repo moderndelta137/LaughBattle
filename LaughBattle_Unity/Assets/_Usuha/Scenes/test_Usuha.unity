@@ -655,7 +655,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 251469790}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 332212319}
+        m_TargetAssemblyTypeName: RecordSystme, Assembly-CSharp
+        m_MethodName: _startRecording_Player_2
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &251469790
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1915,7 +1927,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 815461981}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 332212319}
+        m_TargetAssemblyTypeName: RecordSystme, Assembly-CSharp
+        m_MethodName: _startRecording_Player_1
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &815461981
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2152,6 +2176,7 @@ GameObject:
   - component: {fileID: 1047667900}
   - component: {fileID: 1047667899}
   - component: {fileID: 1047667898}
+  - component: {fileID: 1047667901}
   m_Layer: 0
   m_Name: MainCamera_Record
   m_TagString: MainCamera
@@ -2233,6 +2258,23 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1169784168}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1047667901
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1047667897}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1bae86f0114b448659a692aac6201823, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  myCamera: {fileID: 0}
+  initialCenterPos: {x: 0, y: 0, z: -9.35}
+  Player_1_Pos: {x: -4.1, y: -2.2, z: -4.4}
+  Player_2_pos: {x: 4.86, y: -2.2, z: -4.4}
+  isMoving: 1
 --- !u!1 &1052231530
 GameObject:
   m_ObjectHideFlags: 0

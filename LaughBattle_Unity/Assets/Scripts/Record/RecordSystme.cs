@@ -5,6 +5,7 @@ using UnityEngine;
 public class RecordSystme : MonoBehaviour
 {
     public AudioRecorder_v1 recorder_player_1, recorder_player_2;
+    public bool _done_rec_p1 = false, _done_rec_p2 = false;
 
     void Start()
     {
@@ -13,7 +14,10 @@ public class RecordSystme : MonoBehaviour
 
     void Update()
     {
-        
+        if(recorder_player_1.isRecording == true)
+        {
+
+        }
     }
 
     public void _startRecording_Player_1()
@@ -25,4 +29,6 @@ public class RecordSystme : MonoBehaviour
     {
         recorder_player_2.StartRecording();
     }
+
+
 }
