@@ -29,8 +29,8 @@ public class RecordSystme : MonoBehaviour
         {
             if (finished_p2_once == true)
             {
-                _finish_allRecording();
-                //Invoke("_finish_allRecording()", 1f);
+                //_finish_allRecording();
+                Invoke("_finish_allRecording", 1f);
                 finished_p2_once = false;
             }
         }
@@ -59,6 +59,7 @@ public class RecordSystme : MonoBehaviour
     void _finish_allRecording()
     {
         Debug.Log("finish all recording");
+        TransitionManager.instance.TransitionToBattle();
     }
 
     public void _startRecording_Player_1()

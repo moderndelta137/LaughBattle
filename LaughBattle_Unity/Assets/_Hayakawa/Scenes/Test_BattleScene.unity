@@ -578,7 +578,7 @@ MonoBehaviour:
   freq: 0
   count: 0
   _count: 0
-  lerpRate: 0.1
+  lerpRate: 0.95
   lengthInSeconds: 3
   isPlaying: 0
   isRecording: 0
@@ -645,6 +645,9 @@ MonoBehaviour:
   bulletGenerator: {fileID: 2082995838}
   recorder_player_1: {fileID: 850281818}
   recorder_player_2: {fileID: 1589056743}
+  healthBar_player_1: {fileID: 0}
+  healthBar_player_2: {fileID: 0}
+  playButton: {fileID: 0}
   Player_1_HP: 0
   Player_2_HP: 0
   vol_player_1: 0
@@ -1009,7 +1012,7 @@ MonoBehaviour:
   freq: 0
   count: 0
   _count: 0
-  lerpRate: 0.1
+  lerpRate: 0.95
   lengthInSeconds: 3
   isPlaying: 0
   isRecording: 0
@@ -1190,7 +1193,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 746afc2bb13ad49a7b80fa57f613d6b0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bulletPrefab: {fileID: 7834977178714472194, guid: e94cc17693658437e91fb792f2332159, type: 3}
+  bulletPrefab1: {fileID: 7834977178714472194, guid: e94cc17693658437e91fb792f2332159, type: 3}
+  bulletPrefab2: {fileID: 7834977178714472194, guid: 80043550cb2b6b7439fe1c99a4bed5bf, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

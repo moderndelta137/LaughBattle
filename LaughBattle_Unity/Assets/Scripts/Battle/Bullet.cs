@@ -29,30 +29,40 @@ public class Bullet : MonoBehaviour
     void Update()
     {
         rigid.velocity = moveDir * speed;
-    }
+	}
 
 
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if(Player_1==true)
-        {
-            if(collision.gameObject.tag == "Player_2")
-            {
-                Debug.Log("hit player 2");
-                BattleSystem.instance._calculateDamage(2, 1);
-                Destroy(this.gameObject);
-            }
-        }
+	private void OnTriggerEnter2D(Collider2D collision)
+	{
+		if (Player_1 == true)
+		{
+			if (collision.gameObject.tag == "Player_2")
+			{
+				Debug.Log("hit player 2");
+				BattleSystem.instance._calculateDamage(2, 1);
+				Destroy(this.gameObject);
+			}
+		}
 
-        if (Player_2 == true)
-        {
-            if (collision.gameObject.tag == "Player_1")
-            {
-                Debug.Log("hit player 1");
-                BattleSystem.instance._calculateDamage(1, 1);
+		if (Player_2 == true)
+		{
+			if (collision.gameObject.tag == "Player_1")
+			{
+				Debug.Log("hit player 1");
+				BattleSystem.instance._calculateDamage(1, 1);
 
-                Destroy(this.gameObject);
-            }
-        }
-    }
+				Destroy(this.gameObject);
+			}
+		}
+
+		if (collision.gameObject.tag == "Bullet_2")
+		{
+			Destroy(this.gameObject);
+		}
+
+		if (collision.gameObject.tag == "Bullet_1")
+		{
+			Destroy(this.gameObject);
+		}
+	}
 }

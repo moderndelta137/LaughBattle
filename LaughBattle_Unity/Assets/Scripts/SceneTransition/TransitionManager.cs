@@ -5,6 +5,7 @@ using TMPro;
 
 public class TransitionManager : MonoBehaviour
 {
+    public static TransitionManager instance;
     public GameObject TitleScene;
 
     public GameObject RecordScene;
@@ -18,6 +19,7 @@ public class TransitionManager : MonoBehaviour
     public GameObject BattleScene;
     public GameObject ResultScene;
     public GameObject CreditScene;
+    public int WinPlayerIndex;
     public enum SceneState
     {
         Title,
@@ -28,6 +30,11 @@ public class TransitionManager : MonoBehaviour
     }
     public SceneState CurrentState;
     // Start is called before the first frame update
+
+    private void Awake()
+    {
+        instance = this;
+    }
     void Start()
     {
         CurrentState = SceneState.Title;
