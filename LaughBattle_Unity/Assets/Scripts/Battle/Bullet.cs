@@ -5,14 +5,17 @@ using UnityEngine;
 public class Bullet : MonoBehaviour
 {
     public bool Player_1 = false, Player_2 = false;
+	public Sprite[] _sprite;
     Rigidbody2D rigid;
     Vector2 moveDir;
     float speed = 3f;
     void Start()
-    {
-        rigid = GetComponent<Rigidbody2D>();
+	{
+		rigid = GetComponent<Rigidbody2D>();
+		GameObject child = transform.GetChild(0).gameObject;
+		child.GetComponent<SpriteRenderer>().sprite = _sprite[Random.Range(0, _sprite.Length)];
 
-        if(transform.position.x < 0) //bullet from Player 1
+		if (transform.position.x < 0) //bullet from Player 1
         {
             moveDir = Vector2.right;
             Player_1 = true;
@@ -21,7 +24,6 @@ public class Bullet : MonoBehaviour
         {
             moveDir = Vector2.left;
             Player_2 = true;
-
         }
 
     }
@@ -42,6 +44,11 @@ public class Bullet : MonoBehaviour
 				BattleSystem.instance._calculateDamage(2, 1);
 				Destroy(this.gameObject);
 			}
+
+			if (collision.gameObject.tag == "Bullet_2")
+			{
+				Destroy(this.gameObject);
+			}
 		}
 
 		if (Player_2 == true)
@@ -53,16 +60,15 @@ public class Bullet : MonoBehaviour
 
 				Destroy(this.gameObject);
 			}
+
+			if (collision.gameObject.tag == "Bullet_1")
+			{
+				Destroy(this.gameObject);
+			}
 		}
 
-		if (collision.gameObject.tag == "Bullet_2")
-		{
-			Destroy(this.gameObject);
-		}
 
-		if (collision.gameObject.tag == "Bullet_1")
-		{
-			Destroy(this.gameObject);
-		}
+
+
 	}
 }
