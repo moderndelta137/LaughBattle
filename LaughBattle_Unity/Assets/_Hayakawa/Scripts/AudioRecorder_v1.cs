@@ -9,13 +9,13 @@ public class AudioRecorder_v1 : MonoBehaviour
 	public Slider[] slider;
 
 	private AudioClip recording;
-	private AudioSource[] audioSources;
 	private AudioSource audioSource;
 
-	private float _volume, _freq;
-	public float volume, freq, lerpRate;
+	private float _volume, _freq, _count, startTime;
+	public float volume, freq, count, lerpRate;
 	public int lengthInSeconds = 10;
-	public bool isRecording = false;
+	private bool isCount,isPlaying;
+	public bool isRecording = false , finished_recording = false;
 
 	void Start()
 	{
@@ -30,12 +30,14 @@ public class AudioRecorder_v1 : MonoBehaviour
 	{
 		GetVolume();
 		GetSpectrum();
+		GetCount();
 
 		if (slider[0] == null)
 			return;
 
 		slider[0].value = volume;
 		slider[1].value = freq;
+		slider[2].value = count;
 	}
 
 	public void StartRecording()
@@ -44,6 +46,7 @@ public class AudioRecorder_v1 : MonoBehaviour
 			return;
 
 		isRecording = true;
+		StartCount();
 		recording = Microphone.Start(null, false, lengthInSeconds, 44100);
 		Debug.Log("Start Recording");
 
@@ -51,13 +54,16 @@ public class AudioRecorder_v1 : MonoBehaviour
 	}
 	public void StopRecording()
 	{
-		isRecording = false;
+		finished_recording = true;
+        isRecording = false;
+		isCount = false;
 		Microphone.End(null);
 		Debug.Log("Stop Recording");
 	}
 
 	public void PlayRecording()
 	{
+		StartCount();
 		audioSource.clip = recording;
 		audioSource.Play();
 		Debug.Log("Play Recording");
@@ -104,5 +110,31 @@ public class AudioRecorder_v1 : MonoBehaviour
 		var __freq = ___freq.Map(80f, 2500f, 0f, 1f);
 		_freq = Mathf.Lerp(_freq, __freq, lerpRate);
 		freq = Mathf.Clamp(_freq, 0f, 1f);
+	}
+
+	public void GetCount()
+	{
+		if (!isCount)
+			return;
+
+		_count = Time.time - startTime;
+		count = _count.Map(0f, lengthInSeconds, 0f, 1f);
+	}
+
+	public void StartCount()
+	{
+		startTime = Time.time;
+		isCount = true;
+	}
+
+	public void GetPlaying()
+	{
+		if (!audioSource.isPlaying && isPlaying)
+		{
+			isCount = false;
+			Debug.Log("End Playing");
+		}
+
+		isPlaying = audioSource.isPlaying;
 	}
 }
