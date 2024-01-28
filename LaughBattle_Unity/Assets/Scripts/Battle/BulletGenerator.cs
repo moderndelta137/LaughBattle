@@ -16,14 +16,16 @@ public class BulletGenerator : MonoBehaviour
     }
 
 
-    public void _emit_bullet_player_1()
+    public void _emit_bullet_player_1(float posY)
     {
-
+        Vector3 generatePos = new Vector3(generatePos_x_player_1, posY, 0);
+        GameObject bullet = Instantiate(bulletPrefab, generatePos, Quaternion.identity);
     }
 
-    public void _emit_bullet_player_2()
+    public void _emit_bullet_player_2(float posY)
     {
-
+        Vector3 generatePos = new Vector3(generatePos_x_player_2, posY, 0);
+        GameObject bullet = Instantiate(bulletPrefab, generatePos, Quaternion.identity);
     }
 
     // Update is called once per frame

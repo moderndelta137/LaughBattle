@@ -6,12 +6,13 @@ using UnityEngine;
 public class VariableSnapshot
 {
     public float time;
-    public float value;
+    public float vol,freq;
 
-    public VariableSnapshot(float time, float value)
+    public VariableSnapshot(float time, float vol,float freq)
     {
         this.time = time;
-        this.value = value;
+        this.vol = vol;
+        this.freq = freq;
     }
 }
 
