@@ -114,7 +114,7 @@ ScriptedImporter:
     edges: []
     tessellationDetail: 0
     uvTransform: {x: 4, y: 4}
-    spritePosition: {x: 117, y: 73}
+    spritePosition: {x: 111, y: 107}
   - name: 2PEyebrow_r
     originalName: 
     pivot: {x: 0.5, y: 0.5}
@@ -134,8 +134,8 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: -14, y: 557}
-    spritePosition: {x: 171, y: 423}
+    uvTransform: {x: 157, y: 980}
+    spritePosition: {x: 424, y: 457}
   - name: 2PEyebrow_r
     originalName: 
     pivot: {x: 0.5, y: 0.5}
@@ -155,8 +155,8 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: -340, y: 553}
-    spritePosition: {x: 344, y: 410}
+    uvTransform: {x: 4, y: 963}
+    spritePosition: {x: 242, y: 444}
   - name: 2PEye_l
     originalName: 
     pivot: {x: 0.5, y: 0.5}
@@ -177,7 +177,7 @@ ScriptedImporter:
     edges: []
     tessellationDetail: 0
     uvTransform: {x: 157, y: 884}
-    spritePosition: {x: 180, y: 316}
+    spritePosition: {x: 388, y: 350}
   - name: 2PEye_r
     originalName: 
     pivot: {x: 0.5, y: 0.5}
@@ -198,7 +198,7 @@ ScriptedImporter:
     edges: []
     tessellationDetail: 0
     uvTransform: {x: 261, y: 884}
-    spritePosition: {x: 331, y: 316}
+    spritePosition: {x: 237, y: 350}
   - name: 2PMouse
     originalName: 
     pivot: {x: 0.5, y: 0.5}
@@ -218,8 +218,8 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: -225, y: 685}
-    spritePosition: {x: 229, y: 199}
+    uvTransform: {x: 4, y: 884}
+    spritePosition: {x: 290, y: 233}
   - name: 2PFace
     originalName: 
     pivot: {x: 0.5, y: 0.5}
@@ -240,7 +240,7 @@ ScriptedImporter:
     edges: []
     tessellationDetail: 0
     uvTransform: {x: 4, y: 461}
-    spritePosition: {x: 117, y: 73}
+    spritePosition: {x: 132, y: 107}
   - name: 2PCap
     originalName: 
     pivot: {x: 0.5, y: 0.5}
@@ -261,7 +261,7 @@ ScriptedImporter:
     edges: []
     tessellationDetail: 0
     uvTransform: {x: 448, y: 4}
-    spritePosition: {x: 336, y: 324}
+    spritePosition: {x: 111, y: 358}
   characterData:
     bones: []
     parts: []
