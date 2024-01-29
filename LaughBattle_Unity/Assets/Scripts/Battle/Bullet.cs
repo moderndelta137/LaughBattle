@@ -42,11 +42,14 @@ public class Bullet : MonoBehaviour
 			{
 				Debug.Log("hit player 2");
 				BattleSystem.instance._calculateDamage(2, 1);
+				Player_2_battle_Animation.instance._playHitAnim();
+				SE.instance._playOneShot_randamaze(1);
 				Destroy(this.gameObject);
 			}
 
 			if (collision.gameObject.tag == "Bullet_2")
 			{
+				SE.instance._playOneShot_randamaze(0);
 				Destroy(this.gameObject);
 			}
 		}
@@ -57,13 +60,16 @@ public class Bullet : MonoBehaviour
 			{
 				Debug.Log("hit player 1");
 				BattleSystem.instance._calculateDamage(1, 1);
-
-				Destroy(this.gameObject);
+                Player_1_battle_Animation.instance._playHitAnim();
+                SE.instance._playOneShot_randamaze(1);
+                Destroy(this.gameObject);
 			}
 
 			if (collision.gameObject.tag == "Bullet_1")
 			{
-				Destroy(this.gameObject);
+                SE.instance._playOneShot_randamaze(0);
+
+                Destroy(this.gameObject);
 			}
 		}
 

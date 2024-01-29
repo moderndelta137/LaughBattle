@@ -13,6 +13,11 @@ public class UI_playbutton : MonoBehaviour
         StartCoroutine(ScaleLoopCoroutine());
     }
 
+    void OnEnable ()
+    {
+        StartCoroutine(ScaleLoopCoroutine());
+    }
+
     IEnumerator ScaleLoopCoroutine()
     {
         while (true)

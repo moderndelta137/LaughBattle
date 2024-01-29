@@ -8,6 +8,7 @@ public class RecordSystme : MonoBehaviour
     public CounterBox countBox_p1, countBox_p2;
     public Slider audioBar_p1, audioBar_p2;
     bool finished_p1_once = true, finished_p2_once = true;
+    public Animator anim_p1, anim_p2;
     void Start()
     {
         countBox_p1.initialNum = recorder_player_1.lengthInSeconds;
@@ -65,11 +66,14 @@ public class RecordSystme : MonoBehaviour
     public void _startRecording_Player_1()
     {
         recorder_player_1.StartRecording();
+        anim_p1.Play("Recording_P1");
     }
 
     public void _startRecording_Player_2()
     {
         recorder_player_2.StartRecording();
+        anim_p2.Play("Recording_P2");
+
     }
 
 

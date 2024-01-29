@@ -12,12 +12,13 @@ public class BattleSystem : MonoBehaviour
     public float Player_1_HP, Player_2_HP;
     public float vol_player_1, freq_player_1, vol_player_2, freq_player_2;
     bool enableShot_p1 = true, enableShot_p2 = true;
-
+    float battleTimeDuration;
     void Awake()
     {
         instance = this;
         Player_1_HP = 10f;
         Player_2_HP = 10f;
+        battleTimeDuration = recorder_player_1.lengthInSeconds;
     }
 
     private void OnEnable()
@@ -69,7 +70,7 @@ public class BattleSystem : MonoBehaviour
 
         if(enableShot_p1 == true)
         {
-            if (vol_player_1 > 0.2f)
+            if (vol_player_1 > 0.4f)
             {
                 bulletGenerator._emit_bullet_player_1(freq_player_1);
 				enableShot_p1 = false;
@@ -78,7 +79,7 @@ public class BattleSystem : MonoBehaviour
 		}
         else
         {
-            if (vol_player_1 < 0.01f)
+            if (vol_player_1 < 0.1f)
             {
                 enableShot_p1 = true;
 
@@ -139,9 +140,38 @@ public class BattleSystem : MonoBehaviour
         }
     }
 
-    public void _startBattle()
+    public void _push_startBattleButton()
     {
+        SE.instance._playOneShot(2);
         playButton.enabled = false;
+        _Start_Battle();
+        Invoke("_checkResult", battleTimeDuration + 5);
+    }
+
+    void _checkResult()
+    {
+        if(Player_1_HP > Player_2_HP)
+        {
+            TransitionManager.instance.WinPlayerIndex = 1;
+
+        } else if (Player_1_HP < Player_2_HP)
+        {
+            TransitionManager.instance.WinPlayerIndex = 2;
+
+        }
+        else
+        {
+            //本来は引き分け
+            TransitionManager.instance.WinPlayerIndex = 1;
+
+        }
+
+        Invoke("transition", 3f);
+    }
+
+    void transition()
+    {
+        TransitionManager.instance.TransitionToResult();
     }
 
 }
