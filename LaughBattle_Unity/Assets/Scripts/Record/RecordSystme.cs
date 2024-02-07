@@ -9,11 +9,16 @@ public class RecordSystme : MonoBehaviour
     public Slider audioBar_p1, audioBar_p2;
     bool finished_p1_once = true, finished_p2_once = true;
     public Animator anim_p1, anim_p2;
-    void Start()
+    void OnEnable()
     {
+        finished_p1_once = true;
+        finished_p2_once = true;
         countBox_p1.initialNum = recorder_player_1.lengthInSeconds;
         countBox_p2.initialNum = recorder_player_2.lengthInSeconds;
+        audioBar_p1.value = 0;
+        audioBar_p2.value = 0;
     }
+
 
     void Update()
     {

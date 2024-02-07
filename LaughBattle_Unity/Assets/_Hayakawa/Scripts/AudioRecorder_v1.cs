@@ -13,7 +13,7 @@ public class AudioRecorder_v1 : MonoBehaviour
 
 	private float _volume, _freq, startTime;
 	public float volume, freq, count, _count, lerpRate;
-	public int lengthInSeconds = 5;
+	public int lengthInSeconds = 15;
 	private bool isCount;
 	public bool isPlaying = false, isRecording = false , finished_recording = false;
 
@@ -24,6 +24,13 @@ public class AudioRecorder_v1 : MonoBehaviour
 		//audioSources[0].loop = true;
 		//while (!(Microphone.GetPosition(null) > 0)) { }
 		//audioSources[0].Play();
+	}
+
+	void OnEnable()
+	{
+		isPlaying=false;
+		isRecording=false;
+		finished_recording=false;
 	}
 
 	void Update()
@@ -137,5 +144,14 @@ public class AudioRecorder_v1 : MonoBehaviour
 		}
 
 		isPlaying = audioSource.isPlaying;
+	}
+
+	public void ResetRecordingStatus()
+	{
+		isPlaying = false;
+		isRecording = false;
+		finished_recording = false;
+		count = 0;
+		_count = 0;
 	}
 }

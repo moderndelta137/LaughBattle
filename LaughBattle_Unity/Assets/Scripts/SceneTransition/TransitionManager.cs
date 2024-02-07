@@ -15,6 +15,8 @@ public class TransitionManager : MonoBehaviour
     bool IsRecroding;
     bool Player1Recorded;
     bool Player2Recorded;
+    public AudioRecorder_v1 Player1Recorder;
+    public AudioRecorder_v1 Player2Recorder;
 
     public GameObject BattleScene;
     public GameObject ResultScene;
@@ -118,6 +120,8 @@ public class TransitionManager : MonoBehaviour
         IsRecroding = false;
         Player1Recorded = false;
         Player2Recorded = false;
+        Player1Recorder.ResetRecordingStatus();
+        Player2Recorder.ResetRecordingStatus();
     }
     public void StartRecording()
     {

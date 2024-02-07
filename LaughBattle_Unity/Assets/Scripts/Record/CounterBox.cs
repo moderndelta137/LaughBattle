@@ -8,7 +8,7 @@ public class CounterBox : MonoBehaviour
     TextMeshProUGUI tmp;
     public float initialNum;
     public AudioRecorder_v1 recorder;
-    void Start()
+    void OnEnable()
     {
         tmp = transform.GetChild(0).GetComponent<TextMeshProUGUI>();
         tmp.text = recorder.lengthInSeconds.ToString();

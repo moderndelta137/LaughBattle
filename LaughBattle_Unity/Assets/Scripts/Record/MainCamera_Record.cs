@@ -15,12 +15,12 @@ public class MainCamera_Record : MonoBehaviour
         myCamera = GetComponent<Camera>();
     }
 
-    private void Start()
+    private void OnEnable()
     {
-        Debug.Log("aaa");
-
-        StartCoroutine(_delay(0.6f));
         
+
+        StartCoroutine(_delay(1.0f));
+        myCamera.transform.position = initialCenterPos;
 
     }
 

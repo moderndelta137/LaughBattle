@@ -145,7 +145,7 @@ public class BattleSystem : MonoBehaviour
         SE.instance._playOneShot(2);
         playButton.enabled = false;
         _Start_Battle();
-        Invoke("_checkResult", battleTimeDuration + 5);
+        Invoke("_checkResult", battleTimeDuration + 1);
     }
 
     void _checkResult()
