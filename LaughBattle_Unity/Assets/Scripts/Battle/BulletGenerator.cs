@@ -16,18 +16,20 @@ public class BulletGenerator : MonoBehaviour
     }
 
 
-    public void _emit_bullet_player_1(float posY)
+    public void _emit_bullet_player_1(float posY, float scale)
     {
         var _posY = posY.Map(0f, 1f, bullet_posY_bottom, bullet_posY_top); 
         Vector3 generatePos = new Vector3(generatePos_x_player_1, _posY, 0);
         GameObject bullet = Instantiate(bulletPrefab1, generatePos, Quaternion.identity);
+        bullet.transform.localScale=Vector3.one*scale;
     }
 
-    public void _emit_bullet_player_2(float posY)
+    public void _emit_bullet_player_2(float posY, float scale)
     {
         var _posY = posY.Map(0f, 1f, bullet_posY_bottom, bullet_posY_top);
         Vector3 generatePos = new Vector3(generatePos_x_player_2, _posY, 0);
         GameObject bullet = Instantiate(bulletPrefab2, generatePos, Quaternion.identity);
+        bullet.transform.localScale=Vector3.one*scale;
     }
 
     // Update is called once per frame

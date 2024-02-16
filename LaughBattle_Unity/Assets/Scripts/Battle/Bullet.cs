@@ -43,13 +43,17 @@ public class Bullet : MonoBehaviour
 				Debug.Log("hit player 2");
 				BattleSystem.instance._calculateDamage(2, 1);
 				Player_2_battle_Animation.instance._playHitAnim();
-				SE.instance._playOneShot_randamaze(1);
+				SE.instance._playPlayerAudio();
 				Destroy(this.gameObject);
+				BattleSystem.instance.CameraShakeR();
+				BattleSystem.instance.P2HPBarAnimation();
+				BattleSystem.instance.PlayPlayerHitVFX(this.transform.position);
 			}
 
 			if (collision.gameObject.tag == "Bullet_2")
 			{
-				SE.instance._playOneShot_randamaze(0);
+				BattleSystem.instance.PlayBulletHitVFX(this.transform.position);
+				SE.instance._playBulletAudio();
 				Destroy(this.gameObject);
 			}
 		}
@@ -61,13 +65,16 @@ public class Bullet : MonoBehaviour
 				Debug.Log("hit player 1");
 				BattleSystem.instance._calculateDamage(1, 1);
                 Player_1_battle_Animation.instance._playHitAnim();
-                SE.instance._playOneShot_randamaze(1);
+                SE.instance._playPlayerAudio();
                 Destroy(this.gameObject);
+				BattleSystem.instance.CameraShakeL();
+				BattleSystem.instance.P1HPBarAnimation();
+				BattleSystem.instance.PlayPlayerHitVFX(this.transform.position);
 			}
 
 			if (collision.gameObject.tag == "Bullet_1")
 			{
-                SE.instance._playOneShot_randamaze(0);
+                //SE.instance._playBulletAudio();
 
                 Destroy(this.gameObject);
 			}

@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Mathematics;
 using UnityEngine;
 
 public class BattleSystem : MonoBehaviour
@@ -13,6 +14,12 @@ public class BattleSystem : MonoBehaviour
     public float vol_player_1, freq_player_1, vol_player_2, freq_player_2;
     bool enableShot_p1 = true, enableShot_p2 = true;
     float battleTimeDuration;
+    public Animator CameraAnimator;
+    public Animator P1HPBarAnimator;
+    public Animator P2HPBarAnimator;
+    public GameObject PlayerHitVFX;
+    public GameObject BulletHitVFX;
+
     void Awake()
     {
         instance = this;
@@ -70,9 +77,9 @@ public class BattleSystem : MonoBehaviour
 
         if(enableShot_p1 == true)
         {
-            if (vol_player_1 > 0.4f)
+            if (vol_player_1 > 0.2f)
             {
-                bulletGenerator._emit_bullet_player_1(freq_player_1);
+                bulletGenerator._emit_bullet_player_1(freq_player_1,vol_player_1*2f);
 				enableShot_p1 = false;
                 Debug.Log(freq_player_1);
 			}
@@ -96,14 +103,14 @@ public class BattleSystem : MonoBehaviour
         {
             if (vol_player_2 > 0.2f)
             {
-                bulletGenerator._emit_bullet_player_2(freq_player_2);
+                bulletGenerator._emit_bullet_player_2(freq_player_2, vol_player_2*2f);
 				enableShot_p2 = false;
                 Debug.Log(freq_player_2);
             }
 		}
         else
         {
-            if (vol_player_2 < 0.01f)
+            if (vol_player_2 < 0.1f)
             {
                 enableShot_p2 = true;
 
@@ -142,7 +149,7 @@ public class BattleSystem : MonoBehaviour
 
     public void _push_startBattleButton()
     {
-        SE.instance._playOneShot(2);
+        //SE.instance._playOneShot(2);
         playButton.enabled = false;
         _Start_Battle();
         Invoke("_checkResult", battleTimeDuration + 1);
@@ -163,7 +170,6 @@ public class BattleSystem : MonoBehaviour
         {
             //本来は引き分け
             TransitionManager.instance.WinPlayerIndex = 1;
-
         }
 
         Invoke("transition", 3f);
@@ -171,7 +177,40 @@ public class BattleSystem : MonoBehaviour
 
     void transition()
     {
-        TransitionManager.instance.TransitionToResult();
+        if(Player_1_HP<=0 ||Player_2_HP<=0)
+            TransitionManager.instance.TransitionToResult();
+        else
+            TransitionManager.instance.TransitionToRecord();
+    }
+
+    public void CameraShakeR()
+    {
+        CameraAnimator.SetTrigger("CameraShake_r");
+    }
+    public void CameraShakeL()
+    {
+        CameraAnimator.SetTrigger("CameraShake_l");
+    }
+    public void P1HPBarAnimation()
+    {
+        P1HPBarAnimator.SetTrigger("HPDamage");
+    }
+    public void P2HPBarAnimation()
+    {
+        P2HPBarAnimator.SetTrigger("HPDamage");
+    }
+
+    public void PlayPlayerHitVFX(Vector2 Loc)
+    {
+        Vector3 loc3 = new Vector3(Loc.x,Loc.y, -3f);
+        Instantiate(PlayerHitVFX,loc3,quaternion.Euler(0,0,0));
+
+    }
+    public void PlayBulletHitVFX(Vector2 Loc)
+    {
+        Vector3 loc3 = new Vector3(Loc.x,Loc.y, -3f);
+        Instantiate(BulletHitVFX,Loc,quaternion.Euler(0,0,0));
+
     }
 
 }

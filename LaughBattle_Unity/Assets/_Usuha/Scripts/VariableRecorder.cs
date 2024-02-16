@@ -115,7 +115,7 @@ public class VariableRecorder : MonoBehaviour
                 if(variable_Player1_vol > 0.05f)
                 {
                     //emit
-                    BulletGenerator.instance._emit_bullet_player_1(0);
+                    BulletGenerator.instance._emit_bullet_player_1(0,variable_Player1_vol);
                     enableShot = false;
                 }
             }
@@ -156,7 +156,7 @@ public class VariableRecorder : MonoBehaviour
                 if (variable_Player2_vol > 0.05f)
                 {
                     //emit
-                    BulletGenerator.instance._emit_bullet_player_2(0);
+                    BulletGenerator.instance._emit_bullet_player_2(0,variable_Player2_vol);
                     enableShot = false;
                 }
             }

@@ -5,7 +5,10 @@ using UnityEngine;
 public class SE : MonoBehaviour
 {
     public static SE instance;
-    AudioSource[] audio;
+    public AudioSource playerhitaudio;
+    public AudioSource bullethitaudio;
+    public AudioClip[] playerhitcilps;
+    public AudioClip[] bullethitcilps;
 
     void Awake()
     {
@@ -15,24 +18,21 @@ public class SE : MonoBehaviour
 
     void initialize()
     {
-        audio = new AudioSource[transform.childCount];
-        for (int i = 0; i < transform.childCount; i++)
-        {
-            audio[i] = transform.GetChild(i).GetComponent<AudioSource>();
-        }
+
     }
 
-    public void _playOneShot(int i)
+    public void _playPlayerAudio()
     {
-        audio[i].PlayOneShot(audio[i].clip);
+        int rand = Random.Range(0, playerhitcilps.Length);
+        playerhitaudio.PlayOneShot(playerhitcilps[rand]);
     }
 
-    public void _playOneShot_randamaze(int i)
+    public void _playBulletAudio()
     {
-        float value = Random.Range(0.8f, 1.2f);
-        audio[i].pitch = value;
-        audio[i].PlayOneShot(audio[i].clip);
+        int rand = Random.Range(0, bullethitcilps.Length);
+        bullethitaudio.PlayOneShot(bullethitcilps[rand]);
     }
+
 
 
 }

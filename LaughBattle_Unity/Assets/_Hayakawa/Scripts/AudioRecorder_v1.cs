@@ -115,7 +115,7 @@ public class AudioRecorder_v1 : MonoBehaviour
 
 		var ___freq = (float)maxIndex * AudioSettings.outputSampleRate / 2 / spectrum.Length;
 
-		var __freq = ___freq.Map(500f, 1500f, 0f, 1f);
+		var __freq = ___freq.Map(500f, 3000f, 0f, 1f);
 		_freq = Mathf.Lerp(_freq, __freq, lerpRate);
 		freq = Mathf.Clamp(_freq, 0f, 1f);
 	}
