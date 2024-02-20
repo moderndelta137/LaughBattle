@@ -80,7 +80,7 @@ public class BattleSystem : MonoBehaviour
             if (vol_player_1 > 0.2f)
             {
                 Player_1_battle_Animation.instance._playAttackAnim();
-                bulletGenerator._emit_bullet_player_1(freq_player_1,vol_player_1*3f);
+                bulletGenerator._emit_bullet_player_1(freq_player_1,vol_player_1*2.2f);
 				enableShot_p1 = false;
                 Debug.Log(freq_player_1);
 			}
@@ -105,7 +105,7 @@ public class BattleSystem : MonoBehaviour
             if (vol_player_2 > 0.2f)
             {
                 Player_2_battle_Animation.instance._playAttackAnim();
-                bulletGenerator._emit_bullet_player_2(freq_player_2, vol_player_2*3f);
+                bulletGenerator._emit_bullet_player_2(freq_player_2, vol_player_2*2.2f);
 				enableShot_p2 = false;
                 Debug.Log(freq_player_2);
             }
@@ -180,7 +180,11 @@ public class BattleSystem : MonoBehaviour
     void transition()
     {
         if(Player_1_HP<=0 ||Player_2_HP<=0)
+        {
             TransitionManager.instance.TransitionToResult();
+            Player_1_HP = 10f;
+            Player_2_HP = 10f;
+        }
         else
             TransitionManager.instance.TransitionToRecord();
     }
