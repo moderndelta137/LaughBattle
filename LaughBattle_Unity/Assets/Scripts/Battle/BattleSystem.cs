@@ -79,7 +79,8 @@ public class BattleSystem : MonoBehaviour
         {
             if (vol_player_1 > 0.2f)
             {
-                bulletGenerator._emit_bullet_player_1(freq_player_1,vol_player_1*2f);
+                Player_1_battle_Animation.instance._playAttackAnim();
+                bulletGenerator._emit_bullet_player_1(freq_player_1,vol_player_1*3f);
 				enableShot_p1 = false;
                 Debug.Log(freq_player_1);
 			}
@@ -103,7 +104,8 @@ public class BattleSystem : MonoBehaviour
         {
             if (vol_player_2 > 0.2f)
             {
-                bulletGenerator._emit_bullet_player_2(freq_player_2, vol_player_2*2f);
+                Player_2_battle_Animation.instance._playAttackAnim();
+                bulletGenerator._emit_bullet_player_2(freq_player_2, vol_player_2*3f);
 				enableShot_p2 = false;
                 Debug.Log(freq_player_2);
             }

@@ -24,4 +24,9 @@ public class Player_2_battle_Animation : MonoBehaviour
     {
         anim.Play("Hit_P2");
     }
+
+        public void _playAttackAnim()
+    {
+        anim.Play("Attack_P2");
+    }
 }

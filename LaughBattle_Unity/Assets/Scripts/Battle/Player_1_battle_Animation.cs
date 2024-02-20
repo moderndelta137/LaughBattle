@@ -24,5 +24,10 @@ public class Player_1_battle_Animation : MonoBehaviour
         anim.Play("Hit_P1");
     }
 
+    public void _playAttackAnim()
+    {
+        anim.Play("Attack_P1");
+    }
+
 
 }
